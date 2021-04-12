@@ -12,6 +12,7 @@
 # 常量
 
 1. #define 常量名 常量值  （宏常量）定义在文件最开始的时候
+
 2. const 数据类型 常量名 = 常量值 修饰这个变量为常量
 
 
@@ -24,17 +25,25 @@ count << "" <<   << endl;  //输出
 # 标识符名规则
 
 标识符不可以是关键字
+
 标识符只能是字母，数字，下划线
+
 第一个字符必须是字母或下划线
+
 字符区分大小写
 
 # 数据类型
 
 数据类型：int:                         255, 0377, 0xff  Integer 4字节
-        short:                                        Short Integer 2字节
+
+        short:                        10              Short Integer 2字节 ±2^15
+
         long:                                         long Integer 4 or 8
+
         long long:                                     long long Integer 8字节
         
+        
 
-
+关键字 sizeof(数据类型/变量) 总结数据大小 
+      
             
