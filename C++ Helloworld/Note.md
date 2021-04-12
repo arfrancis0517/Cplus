@@ -91,11 +91,12 @@ count << "" <<   << endl;  //输出
 
           
 
+```C++
 
 #include <iostream>
 using namespace std;
 
-```C++
+
 int main()
 
 {
