@@ -277,7 +277,149 @@ cin >>
 
 ## 选择结构
 
+
+```C++
+#include <iostream>
+using namespace std;
+ 
+int main ()
+{
+   // 局部变量声明
+   int a = 10;
+ 
+   // 使用 if 语句检查布尔条件
+   if( a < 20 )
+   {
+       // 如果条件为真，则输出下面的语句
+       cout << "a 小于 20" << endl;
+   }
+   cout << "a 的值是 " << a << endl;
+ 
+   return 0;
+}
+```
+
+```C++
+#include <iostream>
+using namespace std;
+ 
+int main ()
+{
+   // 局部变量声明
+   int a = 100;
+ 
+   // 检查布尔条件
+   if( a < 20 )
+   {
+       // 如果条件为真，则输出下面的语句
+       cout << "a 小于 20" << endl;
+   }
+   else
+   {
+       // 如果条件为假，则输出下面的语句
+       cout << "a 大于 20" << endl;
+   }
+   cout << "a 的值是 " << a << endl;
+ 
+   return 0;
+}
+
+```
+
+
+```C++
+#include <iostream>
+using namespace std;
+ 
+int main ()
+{
+   // 局部变量声明
+   char grade = 'D';
+ 
+   switch(grade)
+   {
+   case 'A' :
+      cout << "很棒！" << endl; 
+      break;
+   case 'B' :
+   case 'C' :
+      cout << "做得好" << endl;
+      break;
+   case 'D' :
+      cout << "您通过了" << endl;
+      break;
+   case 'F' :
+      cout << "最好再试一下" << endl;
+      break;
+   default :
+      cout << "无效的成绩" << endl;
+   }
+   cout << "您的成绩是 " << grade << endl;
+ 
+   return 0;
+}
+```
+
+
 ## 循环语句
+
+```C++
+#include <iostream>
+using namespace std;
+ 
+int main ()
+{
+   // 局部变量声明
+   int a = 10;
+
+   // while 循环执行
+   while( a < 20 )
+   {
+       cout << "a 的值：" << a << endl;
+       a++;
+   }
+ 
+   return 0;
+}
+```
+
+
+```C++
+#include <iostream>
+using namespace std;
+ 
+int main ()
+{
+   // for 循环执行
+   for( int a = 10; a < 20; a = a + 1 )
+   {
+       cout << "a 的值：" << a << endl;
+   }
+ 
+   return 0;
+}
+```
+
+
+```C++
+#include <iostream>
+using namespace std;
+ 
+int main ()
+{
+   // 局部变量声明
+   int a = 10;
+
+   // do 循环执行
+   do
+   {
+       cout << "a 的值：" << a << endl;
+       a = a + 1;
+   }while( a < 20 );
+ 
+   return 0;
+}
+```
 
 ### 循环控制语句
 
@@ -290,4 +432,176 @@ C++ 提供了下列的控制语句。点击链接查看每个语句的细节。
 | [break 语句](http://www.runoob.com/cplusplus/cpp-break-statement.html) | 终止  **loop**  或  **switch**  语句，程序流将继续执行紧接着 loop 或 switch 的下一条语句。 |
 | [continue 语句](http://www.runoob.com/cplusplus/cpp-continue-statement.html) | 引起循环跳过主体的剩余部分，立即重新开始测试条件。 |
 | [goto 语句](http://www.runoob.com/cplusplus/cpp-goto-statement.html) | 将控制转移到被标记的语句。但是不建议在程序中使用 goto 语句。 |
+
+# 函数
+
+* 返回值类型
+
+返回类型： 一个函数可以返回一个值。 return_type 是函数返回的值的数据类型。有些函数执行所需的操作而不返回值，在这种情况下，return_type 是关键字 void 。
+
+* 函数名
+
+* 参数列表
+
+* 函数语句
+
+* return表达式
+
+```C++
+return_type function_name( parameter list )
+{
+   body of the function
+
+   return
+}
+```
+
+## 函数声明
+
+
+```C++
+#include <iostream>
+using namespace std;
+ 
+// 函数声明
+int max(int num1, int num2);
+ 
+int main ()
+{
+   // 局部变量声明
+   int a = 100;
+   int b = 200;
+   int ret;
+ 
+   // 调用函数来获取最大值
+   ret = max(a, b);
+ 
+   cout << "Max value is : " << ret << endl;
+ 
+   return 0;
+}
+ 
+// 函数返回两个数中较大的那个数
+int max(int num1, int num2) 
+{
+   // 局部变量声明
+   int result;
+ 
+   if (num1 > num2)
+      result = num1;
+   else
+      result = num2;
+ 
+   return result; 
+}
+```
+
+# 数组
+
+1. 数据类型 数组名[数组长度];
+
+2. 数据类型 数组名[数组长度] = { 1, 2, 3 };
+
+3. 数据类型 数组名[] = { 1, 2, 3 }
+
+数组名[0], 数组名[1], 数组名[3]...
+
+(int)&数组名[] 可以看保存地址
+
+## 二维数组：
+
+1. 数组类型 数组名[行数][列数];
+
+2. 数组类型 数组名[行数][列数] = {{ 1, 2, 3 } , {1, 2, 3 }};
+
+3. 数组类型 数组名[行数][列数] = { 1, 2, 3, 4 ...};
+
+4. 数组类型 数组名[ ][列数] = { 1, 2, 3, 4 ...};
+
+(int)&数组名[][] 可以看保存地址
+
+
+
+```C++
+#include <iostream>
+using namespace std;
+ 
+#include <iomanip>
+using std::setw;
+ 
+int main ()
+{
+   int n[ 10 ]; // n 是一个包含 10 个整数的数组
+ 
+   // 初始化数组元素          
+   for ( int i = 0; i < 10; i++ )
+   {
+      n[ i ] = i + 100; // 设置元素 i 为 i + 100
+   }
+   cout << "Element" << setw( 13 ) << "Value" << endl;
+ 
+   // 输出数组中每个元素的值                     
+   for ( int j = 0; j < 10; j++ )
+   {
+      cout << setw( 7 )<< j << setw( 13 ) << n[ j ] << endl;
+   }
+ 
+   return 0;
+}
+```
+
+# 数字 计算
+
+```C++
+#include <iostream>
+#include <cmath>
+using namespace std;
+ 
+int main ()
+{
+   // 数字定义
+   short  s = 10;
+   int    i = -1000;
+   long   l = 100000;
+   float  f = 230.47;
+   double d = 200.374;
+
+   // 数学运算
+   cout << "sin(d) :" << sin(d) << endl;
+   cout << "abs(i)  :" << abs(i) << endl;
+   cout << "floor(d) :" << floor(d) << endl;
+   cout << "sqrt(f) :" << sqrt(f) << endl;
+   cout << "pow( d, 2) :" << pow(d, 2) << endl;
+ 
+   return 0;
+}
+
+
+#include <iostream>
+#include <ctime> // 随机数
+#include <cstdlib>
+
+using namespace std;
+ 
+int main ()
+{
+   int i,j;
+ 
+   // 设置种子
+   srand( (unsigned)time( NULL ) );
+
+   /* 生成 10 个随机数 */
+   for( i = 0; i < 10; i++ )
+   {
+      // 生成实际的随机数
+      j= rand();
+      cout <<"随机数： " << j << endl;
+   }
+
+   return 0;
+}
+```
+
+# 指针
+
 
