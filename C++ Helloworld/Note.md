@@ -85,7 +85,7 @@ count << "" <<   << endl;  //输出
 
          2. c++ 自己的 string 变量 = "字符串值" 但是要加上头文件 #include <string>
 
-         
+
 
 
 
@@ -95,7 +95,9 @@ count << "" <<   << endl;  //输出
 #include <iostream>
 using namespace std;
 
+```C++
 int main()
+
 {
    cout << "Size of char : " << sizeof(char) << endl;
    cout << "Size of int : " << sizeof(int) << endl;
@@ -106,7 +108,7 @@ int main()
    cout << "Size of wchar_t : " << sizeof(wchar_t) << endl;
    return 0;
 }
-
+```
 // 本实例使用了 endl ，这将在每一行后插入一个换行符，<< 运算符用于向屏幕传多个值。
 
 // 关键字 sizeof(数据类型/变量) 总结数据大小 
