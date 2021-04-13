@@ -707,3 +707,45 @@ int main ()
 
 通过指针间接访问地址编号
 
+int a = 10;
+
+int * p;
+
+
+```C++
+int    *ip;    /* 一个整型的指针 */
+double *dp;    /* 一个 double 型的指针 */
+float  *fp;    /* 一个浮点型的指针 */
+char   *ch     /* 一个字符型的指针 */
+```
+
+## C++ 中使用指针
+
+使用指针时会频繁进行以下几个操作：定义一个指针变量、把变量地址赋值给指针、访问指针变量中可用地址的值。这些是通过使用一元运算符  *****  来返回位于操作数所指定地址的变量的值。下面的实例涉及到了这些操作：
+
+```C++
+#include <iostream>
+
+using namespace std;
+
+int main ()
+{
+   int  var = 20;   // 实际变量的声明
+   int  *ip;        // 指针变量的声明
+
+   ip = &var;       // 在指针变量中存储 var 的地址
+
+   cout << "Value of var variable: ";
+   cout << var << endl;
+
+   // 输出在指针变量中存储的地址
+   cout << "Address stored in ip variable: ";
+   cout << ip << endl;
+
+   // 访问指针中地址的值
+   cout << "Value of *ip variable: ";
+   cout << *ip << endl;
+
+   return 0;
+}
+```
