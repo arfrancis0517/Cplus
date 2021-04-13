@@ -709,7 +709,7 @@ int main ()
 
 int a = 10;
 
-int * p;
+int *p;
 
 
 ```C++
@@ -748,4 +748,114 @@ int main ()
 
    return 0;
 }
+```
+int * p = (int *)0x1100;
+
+# C++ 引用
+
+在这些声明中，&amp; 读作 **引用** 。因此，第一个声明可以读作 "r 是一个初始化为 i 的整型引用"，第二个声明可以读作 "s 是一个初始化为 d 的 double 型引用"。下面的实例使用了 int 和 double 引用：
+
+```C++
+#include <iostream>
+ 
+using namespace std;
+ 
+int main ()
+{
+   // 声明简单的变量
+   int    i;
+   double d;
+ 
+   // 声明引用变量
+   int&    r = i;
+   double& s = d;
+   
+   i = 5;
+   cout << "Value of i : " << i << endl;
+   cout << "Value of i reference : " << r  << endl;
+ 
+   d = 11.7;
+   cout << "Value of d : " << d << endl;
+   cout << "Value of d reference : " << s  << endl;
+   
+   return 0;
+}
+```
+
+# 时间
+
+C++ 标准库没有提供所谓的日期类型。C++ 继承了 C 语言用于日期和时间操作的结构和函数。为了使用日期和时间相关的函数和结构，需要在 C++ 程序中引用 &lt;ctime&gt; 头文件。
+
+下面的实例获取当前系统的日期和时间，包括本地时间和协调世界时（UTC）。
+
+```C++
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main( )
+{
+   // 基于当前系统的当前日期/时间
+   time_t now = time(0);
+   
+   // 把 now 转换为字符串形式
+   char* dt = ctime(&now);
+
+   cout << "本地日期和时间：" << dt << endl;
+
+   // 把 now 转换为 tm 结构
+   tm *gmtm = gmtime(&now);
+   dt = asctime(gmtm);
+   cout << "UTC 日期和时间："<< dt << endl;
+}
+```
+
+当上面的代码被编译和执行时，它会产生下列结果：
+
+```C++
+本地日期和时间：Sat Jan  8 20:07:41 2011
+
+UTC 日期和时间：Sun Jan  9 03:07:41 2011
+```
+
+## 使用结构 tm 格式化时间
+
+**tm**  结构在 C/C++ 中处理日期和时间相关的操作时，显得尤为重要。tm 结构以 C 结构的形式保存日期和时间。大多数与时间相关的函数都使用了 tm 结构。下面的实例使用了 tm 结构和各种与日期和时间相关的函数。
+
+在练习使用结构之前，需要对 C 结构有基本的了解，并懂得如何使用箭头 -&gt; 运算符来访问结构成员。
+
+```C++
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main( )
+{
+   // 基于当前系统的当前日期/时间
+   time_t now = time(0);
+
+   cout << "Number of sec since January 1,1970:" << now << endl;
+
+   tm *ltm = localtime(&now);
+
+   // 输出 tm 结构的各个组成部分
+   cout << "Year: "<< 1900 + ltm->tm_year << endl;
+   cout << "Month: "<< 1 + ltm->tm_mon<< endl;
+   cout << "Day: "<<  ltm->tm_mday << endl;
+   cout << "Time: "<< 1 + ltm->tm_hour << ":";
+   cout << 1 + ltm->tm_min << ":";
+   cout << 1 + ltm->tm_sec << endl;
+}
+```
+
+当上面的代码被编译和执行时，它会产生下列结果：
+
+```C++
+Number of sec since January 1, 1970:1294548238
+Year: 2011
+Month: 1
+Day: 8
+Time: 22: 44:59
 ```
