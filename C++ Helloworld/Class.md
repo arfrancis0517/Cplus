@@ -129,9 +129,11 @@ class student
       bool set(string a)
        
 } 
+```
 
-// 构造函数就是初始化
+# 构造函数
 
+```C++
 // 无参数
 
 #include <iostream>
