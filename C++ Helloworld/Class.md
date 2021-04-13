@@ -401,3 +401,16 @@ CTestBasic::~CTestBasic()
 
 读取静态成员数据的方法叫做静态成员函数
 
+# 正规写类的定义
+
+public：
+
+方法
+
+private:
+ 
+数据
+
+# 类的派生继承
+
+
