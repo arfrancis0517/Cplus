@@ -316,12 +316,88 @@ int main()
 ```
 
 
-# 析构函数
+# 析构函数 销毁数据
 
 ```C++
 
+student *p = new student (20, '张三')；
 
+delete p;
+
+// 这样才能生效 释放内存
+
+student :: ˜studnet ()
 
 ```
+# 常成员函数 const
 
+```C++
+#pragma once
+
+#include 
+class CTestBasic
+{
+public:
+	//常成员：默认初始化
+	CTestBasic() :conNum(0) {
+		value = -1;
+		pValue = new int;
+	}
+	//常成员：重载初始化
+	CTestBasic(int num ) :conNum(num) {} //常成员函数：又成为只读函数，不能改变成员变量的值
+	int getsNum() const;
+	int getcNum() const;
+	int get_scNum() const;
+	int getPointerValue() const;
+
+	~CTestBasic();
+private:
+	//const成员变量不能在类定义处初始化，[ 只能通过构造函数初始化列表进行 ]，并且必须有构造函数
+	const int conNum;
+
+	//static成员变量不能在构造函数初始化列表中初始化，因为它不属于某个对象.
+	static int sNum; 
+    const static  int scNum = 100;
+	int value;
+	int* pValue;
+};
+
+#include "CTestBasic.h"
+
+//静态成员类外初始化
+int CTestBasic::sNum = 1;
+
+//函数定义也必须包含const 关键字
+int CTestBasic::getsNum() const
+{
+	return sNum;
+}
+
+int CTestBasic::getcNum() const
+{
+	return conNum;
+}
+
+int CTestBasic::get_scNum() const
+{
+	return scNum;
+}
+
+int CTestBasic::getPointerValue() const
+{
+	*pValue = 200;
+	//pValue++; Error: pValue的值不能改变
+	return *pValue;
+}
+
+CTestBasic::~CTestBasic()
+{
+}
+```
+
+# 静态成员 static
+
+描述全局情况，和某个对象属性无关，叫做静态成员数据
+
+读取静态成员数据的方法叫做静态成员函数
 
