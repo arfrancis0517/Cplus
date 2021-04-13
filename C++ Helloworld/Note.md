@@ -1,3 +1,16 @@
+# C++ 的基础知识
+
+C++ 在 C 语言 (Structured Programming) 的基础上添加了类，这是面向对象的编程 OOP
+
+类 是 一类事物的基本特征
+
+对象是 针对类的 具体案例
+
+同时C++模版支持 泛型编程 generic programming
+
+独立于特定数据类型
+
+
 # 注释
 
 // 单行注释
@@ -151,6 +164,11 @@ count << "" <<   << endl;  //输出
 #include <iostream>
 using namespace std;
 
+/*
+
+
+
+*/
 
 int main()
 
@@ -456,8 +474,55 @@ return_type function_name( parameter list )
 }
 ```
 
+## 值传递
+
+形参发生变化，实参也不会怎么改变
+
+## 函数的常用类型
+
+1. 无参无返
+
+```C++
+void test01()
+{
+   cout << "This is a test01" << endl;
+}
+```
+
+2. 有参无返
+
+```C++
+void test02(int a)
+{
+   cout << "This is test02: a =" << a << endl;
+}
+```
+
+3. 无参有返
+
+```C++
+int test03()
+{
+   something;
+
+   return 1000;
+}
+```
+
+4. 有参有返
+
+```C++
+int test04(int a)
+{
+   something;
+
+   return a;
+}
+```
+
 ## 函数声明
 
+在函数定义之前，先告诉编译器
 
 ```C++
 #include <iostream>
