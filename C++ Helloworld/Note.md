@@ -165,8 +165,34 @@ count << "" <<   << endl;  //输出
 using namespace std;
 
 /*
+使用 #include 和 python 里 import 一样 这是包含文件
+
+预处理 把iostream添加到程序中 
+
+io 是指 输入和输出， 为了使用 cout cin
+
+还有 cmath， 
+
+如果使用 iostream 而不是 iostream.h，必须使用名称空间编译指令来使之有效
+
+using namespace std;
 
 
+为了使多个来自不同厂家的代码组合起来更加容易
+
+不同的厂家有不同的名称：相同的名字的不同公司的函数 wanda()
+
+可以用 Microflop::wanda() 和 Piscine::wanda() 来区分
+
+
+*如果没有 using namespace*
+
+cout 要写成 std::cout <<  << std::endl;
+
+iostream.h 和 cout
+iostream 和 std::cout
+
+using 是为了简化
 
 */
 
@@ -561,6 +587,16 @@ int max(int num1, int num2)
 }
 ```
 
+## 函数分文件编写
+
+1. 创建头文件 .h
+
+2. 创建函数自己的源文件 .cpp
+
+3. 在头文件中写函数声明
+
+4. 在源文件中写函数定义
+
 # 数组
 
 1. 数据类型 数组名[数组长度];
@@ -669,4 +705,5 @@ int main ()
 
 # 指针
 
+通过指针间接访问地址编号
 
