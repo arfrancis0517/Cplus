@@ -112,6 +112,214 @@ class student
        
 } 
 
-// 
+// student aa
+// aa.name = 
+
+// 成员函数的重载
+
+// 用set()使得在类外重新赋值 具体内容在类外面
+
+class student
+{
+   public:
+      string name;
+      int age;
+
+      bool set(int a);
+      bool set(string a)
+       
+} 
+
+// 构造函数就是初始化
+
+// 无参数
+
+#include <iostream>
+using namespace std;
+
+class Time // 先声明构造函数
+{
+public :
+    Time() // 这是构造函数 没有输入值和返回值 名字和类的一样
+    {
+        hour = 0;  // 在类里定义构造函数
+        minute = 0; // 这些都是默认值
+        sec = 0;
+    }
+    void showtime();
+private:
+    int hour;
+    int minute;
+    int sec;
+};
+void Time::showtime() 
+{
+    cout<<"hour:"<<hour<<"min:"<<minute<<"sec:"<<sec<<endl;
+}
+
+ int main()
+ {
+ Time time; // 赋上默认值
+ time.showtime();
+ getchar();
+ return 0; 
+ }
+
+ // or
+
+ #include <iostream>
+using namespace std;
+
+class Time
+{
+public :
+    Time();
+    void showtime();
+private:
+    int hour;
+    int minute;
+    int sec;
+};
+void Time::showtime()
+{
+    cout<<"hour:"<<hour<<endl<<"min:"<<minute<<endl<<"sec:"<<sec<<endl;
+}
+Time::Time() // 在类外定义构造函数
+{
+    hour = 0;
+    minute = 0;
+    sec = 0;
+}
+ int main()
+ {
+ Time time; //
+ time.showtime();
+ getchar();
+ return 0;
+ }
+
+
+
+
+ // 带参数
+
+ #include <iostream>
+using namespace std;
+
+class Time
+{
+public :
+    Time(int,int,int); // 带参数的构造函数 可以同名函数 用不同输入类型区别
+    void showtime();
+private:
+    int hour;
+    int minute;
+    int sec;
+};
+void Time::showtime()
+{
+    cout<<"hour:"<<hour<<endl<<"min:"<<minute<<endl<<"sec:"<<sec<<endl;
+}
+Time::Time(int h,int m,int s) // 带参数的函数定义 这样就不是默认值了 可以动态输入 前一个Time是类 后一个是构造函数
+{
+    hour = h;
+    minute = m;
+    sec = s;
+}
+ int main()
+ {
+ Time time(1,2,3);
+ time.showtime();
+ getchar();
+ return 0;
+ }
+
+
+
+
+ // 构造函数的重载
+
+ #include <iostream>
+using namespace std;
+
+class Time
+{
+public :
+    Time();
+    Time(int,int,int);
+    void showtime();
+private:
+    int hour;
+    int minute;
+    int sec;
+};
+void Time::showtime()
+{
+    cout<<"hour:"<<hour<<endl<<"min:"<<minute<<endl<<"sec:"<<sec<<endl;
+}
+Time::Time()
+{
+    hour = 0;
+    minute = 0;
+    sec = 0;
+}
+Time::Time(int h,int m,int s)
+{
+    hour = h;
+    minute = m;
+    sec = s;
+}
+ int main()
+ {
+ Time time1(1,2,3); // 引用的是 Time::Time(int h,int m,int s)
+ time1.showtime();
+ Time  time2; // 引用的是 Time::Time()
+ time2.showtime();
+ getchar();
+ return 0;
+ }
+
 
 ```
+
+# set ()
+
+```C++
+#include <iostream>
+#include <set>
+
+ using namespace std;
+ 
+int main()
+{
+     set<int> s;
+     s.insert(1);
+     s.insert(2);
+     s.insert(3);
+     s.insert(1);
+     cout<<"set 的 size 值为 ："<<s.size()<<endl;
+     cout<<"set 的 maxsize的值为 ："<<s.max_size()<<endl;
+     cout<<"set 中的第一个元素是 ："<<*s.begin()<<endl;
+     cout<<"set 中的最后一个元素是:"<<*s.end()<<endl;
+     s.clear();
+     if(s.empty())
+     {
+         cout<<"set 为空 ！！！"<<endl;
+     }
+     cout<<"set 的 size 值为 ："<<s.size()<<endl;
+     cout<<"set 的 maxsize的值为 ："<<s.max_size()<<endl;
+     return 0;
+}
+
+```
+
+
+# 析构函数
+
+```C++
+
+
+
+```
+
+
