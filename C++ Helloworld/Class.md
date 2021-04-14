@@ -131,7 +131,7 @@ class student
 } 
 ```
 
-# 构造函数
+# 1.构造函数
 
 ```C++
 // 无参数
@@ -411,7 +411,7 @@ private:
  
 数据
 
-# 类的派生继承
+# 2.类的派生继承
 
 ```C++
 
@@ -468,5 +468,47 @@ private 里内容无论如何都不能继承
 
 ## 子类构造函数
 
+子类没有构造函数，不能继承，可以调用父类的构造函数，父类构造函数不管怎样都会调用
 
+```C++
+
+class postgraduate : public student // 公派
+{
+
+public:
+    string research; // 新定义字符串
+    postgraduate(); // 无参数的构造函数声明
+    postgraduate(int a, string b, string c); // 带参数的构造函数声明，表示 年龄 姓名 研究方向
+    
+}
+
+postgraduate :: postgraduate() // 无参数构造函数的定义
+{
+    research = "asic design"; // 赋值 研究方向
+}
+
+postgraduate bb; // 主函数
+
+postgraduate :: postgraduate(int a, string b, string c) : student(a, b) // 带参数的构造函数的定义
+{
+    research = c;
+}
+
+postgraduate bb(25, "李小龙", "ASIC design") //主函数 动态赋值
+
+```
+
+先调用父类的构造函数
+
+再用自己的构造函数
+
+先附上父类的值，在加自己的赋值
+
+# 3.多态
+
+
+
+```C++
+
+```
 
