@@ -413,4 +413,60 @@ private:
 
 # 类的派生继承
 
+```C++
+
+class undergraduate : public student // 本科生类定义，冒号代表从 student类 公有 派生出来的
+{
+
+public:
+    string course; // 这行新增定义了一个公开字符串属性course，比如 数学
+
+}
+
+
+class postgraduate : public student // 研究生定义
+// public 表示 公有继承 只继承student公有的部分， 同时也做研究生的公有部分
+// 无法继承 私有 部分
+{
+
+public:
+    string research; // 比如 芯片设计
+
+}
+
+postgraduate bb; // 没有构造函数 有默认值
+
+bb.set(25); // postgraduate 类没有set方法，调用父类student中的方法，对age赋值
+
+```
+派生 可以 自动继承 父类的属性和方法
+
+## 类在不同情况下的继承
+
+protect 保护 和 public private 同级
+
+将父类 的private 替换成 protect
+
+对 父类 没什么影响
+
+```C++
+
+class postgraduate : public student{public, protect}； // 研究生 也可以继承 私有 部分了
+
+postgraduate {public，protect}；
+
+postgraduate bb; // 没有构造函数 有默认值
+
+bb.set(25); // postgraduate 类没有set方法，调用父类student中的方法，对age赋值
+
+class postgraduate : private student {public A, private B} // 只继承 A 且为 私有
+
+class postgraduate : protect student {public A, protect B} // 继承 A B 且都为 保护
+
+```
+private 里内容无论如何都不能继承
+
+## 子类构造函数
+
+
 
