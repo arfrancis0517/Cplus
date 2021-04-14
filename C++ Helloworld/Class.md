@@ -284,7 +284,7 @@ Time::Time(int h,int m,int s)
 
 ```
 
-# set ()
+## set ()
 
 ```C++
 #include <iostream>
@@ -316,7 +316,7 @@ int main()
 ```
 
 
-# 析构函数 销毁数据
+## 析构函数 销毁数据
 
 ```C++
 
@@ -329,7 +329,7 @@ delete p;
 student :: ˜studnet ()
 
 ```
-# 常成员函数 const
+## 常成员函数 const
 
 ```C++
 #pragma once
@@ -395,13 +395,13 @@ CTestBasic::~CTestBasic()
 }
 ```
 
-# 静态成员 static
+## 静态成员 static
 
 描述全局情况，和某个对象属性无关，叫做静态成员数据
 
 读取静态成员数据的方法叫做静态成员函数
 
-# 正规写类的定义
+## 正规写类的定义
 
 public：
 
@@ -506,9 +506,175 @@ postgraduate bb(25, "李小龙", "ASIC design") //主函数 动态赋值
 
 # 3.多态
 
+如同 Python string 可以用 + 连在一起 拼接
+
+## 重载
+
+Python + 更像重载
+
+比如 不同 的输入参数各式不同
+
+不依赖面向对象，依赖编译器
+
+## 隐藏
+
+参数可以格式相同
+
+
+```C++
+
+class student
+{
+
+public:
+    void study (bool a) { cout << "好好学习";}; 
+}
+
+class postgraduate : public student 
+{
+
+public:
+    void study (int b) {cout << "芯片设计";}；
+}
+
+//主函数
+
+postgraduate bb;
+student aa;
+bb.study(2); // 调用自己 输出芯片研究
+aa.study(true); // 调用自己
+bb.study(true); // 出错，父类方法被隐藏，子类找不到父类的同名函数
+
+```
+
+## 覆盖 override
+
+参数格式可以相同
 
 
 ```C++
 
 ```
 
+## 类指针
+
+C++ 多态 的实现依赖于 类指针
+
+```C++
+
+student *p;
+student aa;
+
+p = &aa; // p 指向 aa
+p -> name; // aa.name 一样 返回 name 属性
+p -> study(); // aa.study() 一样 对aa执行成员函数
+
+// 实际更高级写法
+
+student *p = new student(20, '张三'); // new 把student创建出来了 
+delete p;
+
+// 把继承考虑进去 只考虑公有继承
+
+student *p1; // 新建一个student父类指针
+postgraduate *p2; // 新建子类
+student aa;
+postgraduate bb;
+p1 = &aa; // 父指针 到 父对象
+p2 = &bb; // 子指针 到 子对象
+p1 = &bb; // 父指针 到 子对象
+p2 = &aa; // 报错
+p1 -> research; // 报错 父类指针 只能指向 子类，不能调用子类的属性和方法，只能调用继承父类的属性和方法
+
+```
+## 真正的多态和虚函数
+
+指针 隐藏 虚函数 >>> 多态
+
+在所有 函数前加 virtual 可以互相覆盖
+
+父类指针就可以指向子类的属性 和 方法了
+
+```C++
+
+class student
+{
+
+public:
+virtual void study ();  // 虚函数 没有参数
+
+}
+
+void student :: study() // 这里没有virtual
+{cout << "好好学习";}
+
+class postgraduate : public student 
+{
+
+public:
+virtual void study (); // 虚函数 没有参数
+
+}
+
+void postgraduate :: study() // 这里没有virtual
+{cout << "芯片设计";}
+
+class undergraduate : public student 
+{
+
+public:
+virtual void study (); // 虚函数 没有参数
+
+}
+
+void undergraduate :: study() // 这里没有virtual
+
+{cout << "大学物理";}
+
+//主函数 都没有参数
+
+postgraduate bb;
+student aa;
+undergraduate cc;
+student *p;
+p = &aa;
+p -> study(); // 父类的学习的方法
+p = &bb;
+p -> study(); // 调用 子类 研究生的方法 多态
+p = &cc;
+p -> study(); // 调用了 子类 本科生的方法 多态
+
+```
+
+重载是定义时决定，多态是运行时决定
+
+## 纯虚函数和抽象类
+
+上述的学生类 这个大父类 就属于 抽象类  
+
+每个对象都能对应到具体的子类里去
+
+设置抽象类 用纯虚函数
+
+```C++
+
+class student // 这就是个抽象类
+{
+
+public:
+     student(); // 构造函数
+     studnet(int a, string b); // 构造函数重载
+     virtual void study() = 0; // 声明study方法，加了virtual 和 =0 说明是纯虚函数
+     // 这个函数只有声明 没有定义 
+     // 只需要给一个函数加 virtual 和 =0
+     // 具体内容靠子类的多态来实现 具体内容
+}
+
+student aa; // 报错，不允许创建对象
+student *p; // 可以创建抽象类指针
+postgraduate bb; // 创建子类对象
+p = &bb; // 父类指针指向子类对象
+p -> study(); // 调用子类方法
+
+
+```
